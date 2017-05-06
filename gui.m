@@ -14,4 +14,4 @@ btn_funciones = uimenu(f, "Label", "Funciones");
     btn_pcg = uimenu(btn_caract_particular, "Label", "Indicar polos, ceros y ganancia");
     btn_graf_pc = uimenu(btn_caract_particular, "Label", "Graficar polos y ceros");
     btn_estabilidad = uimenu(btn_caract_particular, "Label", "Indicar estabilidad");
-btn_salir = uimenu(f, "Label", "Salir");
+btn_salir = uimenu(f, "Label", "Salir", "Callback", "close(gcf)");
