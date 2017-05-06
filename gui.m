@@ -6,7 +6,7 @@ source("funciones.m");
 f = figure("MenuBar", "None");
 
 btn_ingresar = uimenu(f, "label", "Ingresar nueva G(s)");
-  btn_coeficientes = uimenu(btn_ingresar, "label", "Usando coeficientes", "callback", "dlg_ingresar_gs");
+  btn_coeficientes = uimenu(btn_ingresar, "label", "Usando coeficientes", "callback", "dlg_ingresar_coef");
   btn_zpk = uimenu(btn_ingresar, "label", "Usando ceros, polos y ganancia");
 btn_funciones = uimenu(f, "label", "Funciones");
   btn_detalles_completos = uimenu(btn_funciones, "label", "Mostrar detalles completos");
