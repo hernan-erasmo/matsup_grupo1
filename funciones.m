@@ -15,10 +15,15 @@ function dlg_ingresar_coef
   func_actual = tf(num,den);
 endfunction
 
+
 function get_expresion_gs
+  %Propiedades del plot
   clf;
   axis([0 8 0 8]);
-  title(["Expresion de G(s)"]);
+  box on;
+  axis off;
+  title("Expresion de G(s)","fontsize",30);
+
   global func_actual;
   num = tfpoly2str(struct(func_actual).num{1}, "s");
   den = tfpoly2str(struct(func_actual).den{1}, "s");
