@@ -14,3 +14,14 @@ function dlg_ingresar_coef
   global func_actual;
   func_actual = tf(num,den);
 endfunction
+
+function get_expresion_gs
+  clf;
+  axis([0 8 0 8]);
+  title(["Expresion de G(s)"]);
+  global func_actual;
+  num = tfpoly2str(struct(func_actual).num{1}, "s");
+  den = tfpoly2str(struct(func_actual).den{1}, "s");
+  barra = repmat("-", 1, max(length(num), length(den)));
+  text(4,4,{num,barra,den}, "horizontalalignment", "center", "verticalalignment", "middle");
+endfunction
