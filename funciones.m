@@ -16,6 +16,7 @@ function dlg_ingresar_coef
 endfunction
 
 
+% Retorna una lista de 3 strings: el numerador, la barra de división y el denominador de G(s)
 function [num, barra, den] = get_expresion_gs ()
   global func_actual;
   num = tfpoly2str(struct(func_actual).num{1}, "s");
@@ -31,6 +32,7 @@ function show_expresion_gs
 endfunction
 
 
+% Retorna un cell de strings, donde cada elemento representa un polo de G(s)
 function str_polos = get_polos ()
   global func_actual;
   [ceros, polos, ganancia] = tf2zp(func_actual);
@@ -48,6 +50,7 @@ function show_polos
 endfunction
 
 
+% Retorna un cell de strings, donde cada elemento representa un cero de G(s)
 function str_ceros = get_ceros ()
   global func_actual;
   [ceros, polos, ganancia] = tf2zp(func_actual);
@@ -63,6 +66,22 @@ function show_ceros
   str_ceros = get_ceros;
   text(4,4,str_ceros,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
 endfunction
+
+
+% Retorna un escalar que representa la ganancia de G(s)
+function ganancia = get_ganancia ()
+  global func_actual
+  [ceros, polos, ganancia] = tf2zp(func_actual);
+endfunction
+
+
+function show_ganancia
+  formato_tipo_lista("Ganancia de G(s)");
+  g = get_ganancia;
+  str_ganancia = num2str(g);
+  text(4,4,str_ganancia,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+endfunction
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     FUNCIONES DE FORMATO Y AUXILIARES        %
