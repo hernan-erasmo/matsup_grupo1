@@ -15,7 +15,16 @@ function dlg_ingresar_coef
   func_actual = tf(num,den);
 endfunction
 
-function get_expresion_gs
+
+function [num, barra, den] = get_expresion_gs ()
+  global func_actual;
+  num = tfpoly2str(struct(func_actual).num{1}, "s");
+  den = tfpoly2str(struct(func_actual).den{1}, "s");
+  barra = repmat("-", 1, max(length(num), length(den)));
+endfunction
+
+
+function show_expresion_gs (num, barra, den)
   % Propiedades del plot
   clf;
   axis([0 8 0 8]);
@@ -23,12 +32,11 @@ function get_expresion_gs
   axis off;
   title("Expresion de G(s)","fontsize",30);
 
-  global func_actual;
-  num = tfpoly2str(struct(func_actual).num{1}, "s");
-  den = tfpoly2str(struct(func_actual).den{1}, "s");
-  barra = repmat("-", 1, max(length(num), length(den)));
+  [num, barra, den] = get_expresion_gs;
+
   text(4,4,{num,barra,den}, "horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
 endfunction
+
 
 function get_polos
   % Propiedades del plot
