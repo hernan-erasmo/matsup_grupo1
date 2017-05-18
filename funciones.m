@@ -15,9 +15,8 @@ function dlg_ingresar_coef
   func_actual = tf(num,den);
 endfunction
 
-
 function get_expresion_gs
-  %Propiedades del plot
+  % Propiedades del plot
   clf;
   axis([0 8 0 8]);
   box on;
@@ -28,5 +27,9 @@ function get_expresion_gs
   num = tfpoly2str(struct(func_actual).num{1}, "s");
   den = tfpoly2str(struct(func_actual).den{1}, "s");
   barra = repmat("-", 1, max(length(num), length(den)));
-  text(4,4,{num,barra,den}, "horizontalalignment", "center", "verticalalignment", "middle");
+  text(4,4,{num,barra,den}, "horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+endfunction
+
+function get_polos
+  % Propiedades del plot
 endfunction
