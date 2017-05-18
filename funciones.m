@@ -32,4 +32,17 @@ endfunction
 
 function get_polos
   % Propiedades del plot
+  clf;
+  axis([0 8 0 8]);
+  box on;
+  axis off;
+  title("Polos de G(s)", "fontsize", 30);
+
+  global func_actual;
+  [ceros, polos, ganancia] = tf2zp(func_actual);
+  str_polos = mat2str(polos);
+  str_polos = strrep(str_polos, "[", "");
+  str_polos = strrep(str_polos, "]", "");
+  polos_formateados = strsplit(str_polos,";");
+  text(4,4,polos_formateados,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
 endfunction
