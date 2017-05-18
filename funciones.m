@@ -24,7 +24,7 @@ function [num, barra, den] = get_expresion_gs ()
 endfunction
 
 
-function show_expresion_gs (num, barra, den)
+function show_expresion_gs
   % Propiedades del plot
   clf;
   axis([0 8 0 8]);
