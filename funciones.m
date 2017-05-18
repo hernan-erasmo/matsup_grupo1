@@ -48,6 +48,26 @@ function show_polos
 endfunction
 
 
+function str_ceros = get_ceros ()
+  global func_actual;
+  [ceros, polos, ganancia] = tf2zp(func_actual);
+  ceros_formateados = mat2str(ceros);
+  ceros_formateados = strrep(ceros_formateados, "[", "");
+  ceros_formateados = strrep(ceros_formateados, "]", "");
+  str_ceros = strsplit(ceros_formateados,";");
+endfunction
+
+
+function show_ceros
+  formato_tipo_lista("Ceros de G(s)");
+  str_ceros = get_ceros;
+  text(4,4,str_ceros,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+endfunction
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     FUNCIONES DE FORMATO Y AUXILIARES        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function formato_tipo_lista (titulo_plot)
   % Propiedades del plot
   clf;
