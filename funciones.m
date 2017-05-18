@@ -25,15 +25,8 @@ endfunction
 
 
 function show_expresion_gs
-  % Propiedades del plot
-  clf;
-  axis([0 8 0 8]);
-  box on;
-  axis off;
-  title("Expresion de G(s)","fontsize",30);
-
+  formato_tipo_lista("Expresion de G(s)");
   [num, barra, den] = get_expresion_gs;
-
   text(4,4,{num,barra,den}, "horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
 endfunction
 
@@ -49,13 +42,17 @@ endfunction
 
 
 function show_polos
+  formato_tipo_lista("Polos de G(s)");
+  str_polos = get_polos;
+  text(4,4,str_polos,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+endfunction
+
+
+function formato_tipo_lista (titulo_plot)
   % Propiedades del plot
   clf;
   axis([0 8 0 8]);
   box on;
   axis off;
-  title("Polos de G(s)", "fontsize", 30);
-
-  str_polos = get_polos;
-  text(4,4,str_polos,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+  title(titulo_plot, "fontsize", 30);
 endfunction
