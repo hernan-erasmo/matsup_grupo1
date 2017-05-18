@@ -38,7 +38,17 @@ function show_expresion_gs (num, barra, den)
 endfunction
 
 
-function get_polos
+function str_polos = get_polos ()
+  global func_actual;
+  [ceros, polos, ganancia] = tf2zp(func_actual);
+  polos_formateados = mat2str(polos);
+  polos_formateados = strrep(polos_formateados, "[", "");
+  polos_formateados = strrep(polos_formateados, "]", "");
+  str_polos = strsplit(polos_formateados,";");
+endfunction
+
+
+function show_polos
   % Propiedades del plot
   clf;
   axis([0 8 0 8]);
@@ -46,11 +56,6 @@ function get_polos
   axis off;
   title("Polos de G(s)", "fontsize", 30);
 
-  global func_actual;
-  [ceros, polos, ganancia] = tf2zp(func_actual);
-  str_polos = mat2str(polos);
-  str_polos = strrep(str_polos, "[", "");
-  str_polos = strrep(str_polos, "]", "");
-  polos_formateados = strsplit(str_polos,";");
-  text(4,4,polos_formateados,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+  str_polos = get_polos;
+  text(4,4,str_polos,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
 endfunction
