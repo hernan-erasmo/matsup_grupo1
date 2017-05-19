@@ -83,6 +83,42 @@ function show_ganancia
 endfunction
 
 
+function show_estabilidad
+  formato_tipo_lista("Ganancia de G(s)");
+  estabilidad = get_estabilidad;
+  str_estabilidad = "";
+
+  if (estabilidad == -1)
+    str_estabilidad = "G(s) no es estable"; % Hay polos con partes reales > 0
+  elseif (estabilidad == 0)
+    str_estabilidad = "G(s) es marginalmente estable"; % Los polos tienen partes reales < 0 salvo alguno = 0
+  else
+    str_estabilidad = "G(s) es absolutamente estable"; % Todos los polos tienen partes reales < 0
+  endif
+
+  text(4,4,str_estabilidad,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
+endfunction
+
+
+function esEstable = get_estabilidad ()
+  global func_actual
+  [ceros, polos, ganancia] = tf2zp(func_actual);
+
+  % Si hay algun con parte real mayor a cero, ya no es estable
+  if (any(arrayfun(@gt, real(polos), 0)))
+    esEstable = -1;
+
+  % Si algun polo tiene parte real cero, es marginalmente estable
+  elseif (any(arrayfun(@eq, real(polos), 0)))
+    esEstable = 0;
+
+  % Caso contrario, es absolutamente estable
+  else
+    esEstable = 1;
+  endif
+endfunction
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     FUNCIONES DE FORMATO Y AUXILIARES        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

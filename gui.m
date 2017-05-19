@@ -16,5 +16,5 @@ btn_funciones = uimenu(f, "label", "Funciones", "handlevisibility", "off");
     btn_ganancia = uimenu(btn_caract_particular, "label", "Indicar ganancia de G(s)", "callback", "show_ganancia");
     btn_pcg = uimenu(btn_caract_particular, "label", "Indicar polos, ceros y ganancia");
     btn_graf_pc = uimenu(btn_caract_particular, "label", "Graficar polos y ceros");
-    btn_estabilidad = uimenu(btn_caract_particular, "label", "Indicar estabilidad");
+    btn_estabilidad = uimenu(btn_caract_particular, "label", "Indicar estabilidad", "callback", "show_estabilidad");
 btn_salir = uimenu(f, "Label", "Salir", "handlevisibility", "off", "callback", "close(gcf)");
