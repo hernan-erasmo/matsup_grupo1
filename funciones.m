@@ -129,6 +129,18 @@ function graficar_polos_ceros
 endfunction
 
 
+function get_exp_zpg
+  show_expresion_gs
+  figure(5,"position",[50,50,400,400]);
+  show_polos
+  %plot([1,3,5]);
+  %figure(8,"position",[500,50,400,400]);
+  %plot([1,3,4]);
+  %figure(41,"position",[950,50,400,400]);
+  %plot([1,0,4]);
+endfunction
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     FUNCIONES DE FORMATO Y AUXILIARES        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
