@@ -119,6 +119,16 @@ function esEstable = get_estabilidad ()
 endfunction
 
 
+function graficar_polos_ceros
+  global func_actual;
+  pzmap(func_actual);
+  title("Grafica de polos y ceros");
+  legend("Polo","Cero");
+  xlabel("Eje REAL");
+  ylabel("Eje IMAGINARIO");
+endfunction
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     FUNCIONES DE FORMATO Y AUXILIARES        %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
