@@ -1,3 +1,6 @@
+pkg load control;
+pkg load signal;
+
 source("funciones.m");
 
 % Deshabilita los botones de menu que vienen por defecto
