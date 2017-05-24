@@ -6,7 +6,7 @@ f = figure("MenuBar", "None");
 % La propiedad handlevisibility hace que no se limpie ese widget al llamar a clf
 btn_ingresar = uimenu(f, "label", "Ingresar nueva G(s)", "handlevisibility", "off");
   btn_coeficientes = uimenu(btn_ingresar, "label", "Usando coeficientes", "callback", "dlg_ingresar_coef");
-  btn_zpk = uimenu(btn_ingresar, "label", "Usando ceros, polos y ganancia");
+  btn_zpk = uimenu(btn_ingresar, "label", "Usando ceros, polos y ganancia", "callback", "dlg_ingresar_zpg");
 btn_funciones = uimenu(f, "label", "Funciones", "handlevisibility", "off");
   btn_detalles_completos = uimenu(btn_funciones, "label", "Mostrar detalles completos");
   btn_caract_particular = uimenu(btn_funciones, "label", "Elegir caracteristica en particular");

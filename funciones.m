@@ -2,6 +2,23 @@
 
 global func_actual;
 
+
+function dlg_ingresar_zpg
+  prompt = {"Polos (separados por comas)", "Ceros (separados por comas)", "Ganancia"};
+  defaults = {"2,-3,-1+i,-1-i","2,-1","5"};
+  rowscols = 1;
+  dims = inputdlg(prompt, "Ingrese polos, ceros y ganancia de G(s)", rowscols, defaults);
+
+  p = str2double(strsplit(dims{1},","));
+  z = str2double(strsplit(dims{2},","));
+  g = str2double(strsplit(dims{3},","));
+
+  global func_actual;
+  [num, den] = zp2tf(z,p,g);
+  func_actual = tf(num,den);
+endfunction
+
+
 function dlg_ingresar_coef
   prompt = {"Numerador (separados por comas)", "Denominador (separados por comas)"};
   defaults = {"2,3", "1,0,4,3"};
