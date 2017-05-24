@@ -138,7 +138,7 @@ endfunction
 
 function graficar_polos_ceros
   global func_actual;
-  figure(98,"position",[50,50,400,400]);
+  figure(98,"position",[250,280,400,400]);
   pzmap(func_actual);
   title("Grafica de polos y ceros");
   legend("Polo","Cero");
@@ -155,6 +155,14 @@ function get_exp_zpg
   show_ceros
   figure(41,"position",[950,50,400,400]);
   show_ganancia
+endfunction
+
+
+function get_all
+  get_exp_zpg
+  graficar_polos_ceros
+  figure(119,"position",[750,280,400,400]);
+  show_estabilidad
 endfunction
 
 
