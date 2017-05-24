@@ -21,9 +21,20 @@ function dlg_ingresar_zpg
   z = str2double(strsplit(dims{2},","));
   g = str2double(strsplit(dims{3},","));
 
-  global func_actual;
-  [num, den] = zp2tf(z,p,g);
-  func_actual = tf(num,den);
+  if (any(arrayfun(@isnan, p)))
+    errordlg("El conjunto de polos no tiene el formato correcto. Ingresarlo nuevamente.", "Error de carga");
+    return
+  elseif (any(arrayfun(@isnan, z)))
+    errordlg("El conjunto de ceros no tiene el formato correcto. Ingresarlo nuevamente.", "Error de carga");
+    return
+  elseif (isnan(g))
+    errordlg("El valor de la ganancia no es valido. Ingresarlo nuevamente.", "Error de carga");
+    return
+  else
+    global func_actual;
+    [num, den] = zp2tf(z,p,g);
+    func_actual = tf(num,den);
+  endif
 endfunction
 
 
