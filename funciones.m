@@ -44,8 +44,17 @@ function dlg_ingresar_coef
   num = str2double(strsplit(dims{1},","));
   den = str2double(strsplit(dims{2},","));
 
-  global func_actual;
-  func_actual = tf(num,den);
+  if (any(arrayfun(@isnan, num)))
+    errordlg("El numerador no tiene el formato correcto. Ingresarlo nuevamente.", "Error de carga");
+    return
+  elseif (any(arrayfun(@isnan, den)))
+    errordlg("El denominador no tiene el formato correcto. Ingresarlo nuevamente.", "Error de carga");
+    return
+  else
+    global func_actual;
+    func_actual = tf(num,den);
+  endif
+
 endfunction
 
 
