@@ -138,7 +138,6 @@ endfunction
 
 function graficar_polos_ceros
   global func_actual;
-  show_expresion_gs
   figure(98,"position",[50,50,400,400]);
   pzmap(func_actual);
   title("Grafica de polos y ceros");
