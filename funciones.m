@@ -9,6 +9,14 @@ function dlg_ingresar_zpg
   rowscols = 1;
   dims = inputdlg(prompt, "Ingrese polos, ceros y ganancia de G(s)", rowscols, defaults);
 
+  % El usuario apretó el botón de Cancelar
+  if (length(dims) == 0)
+    formato_tipo_lista("No se ha ingresado ninguna G(s)");
+    return
+  else
+    formato_tipo_lista("");
+  endif
+
   p = str2double(strsplit(dims{1},","));
   z = str2double(strsplit(dims{2},","));
   g = str2double(strsplit(dims{3},","));
@@ -24,6 +32,14 @@ function dlg_ingresar_coef
   defaults = {"2,3", "1,0,4,3"};
   rowscols = 1;
   dims = inputdlg(prompt, "Ingrese coeficientes de G(s)", rowscols, defaults);
+
+  % El usuario apretó el botón de Cancelar
+  if (length(dims) == 0)
+    formato_tipo_lista("No se ha ingresado ninguna G(s)");
+    return
+  else
+    formato_tipo_lista("");
+  endif
 
   num = str2double(strsplit(dims{1},","));
   den = str2double(strsplit(dims{2},","));
