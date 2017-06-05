@@ -21,3 +21,9 @@ btn_funciones = uimenu(f, "label", "Funciones", "handlevisibility", "off");
     btn_graf_pc = uimenu(btn_caract_particular, "label", "Graficar polos y ceros", "callback", "graficar_polos_ceros");
     btn_estabilidad = uimenu(btn_caract_particular, "label", "Indicar estabilidad", "callback", "show_estabilidad");
 btn_salir = uimenu(f, "Label", "Salir", "handlevisibility", "off", "callback", "close(gcf)");
+
+box on;
+axis off;
+text(0.15,0.8,"Bienvenido a ", "fontsize", 30);
+text(0.625,0.8,"ASIC", "fontsize", 30,"color","blue","fontweight","bold");
+text(0.14,0.4,"Para comenzar ingrese una nueva G(s)", "fontsize", 15);

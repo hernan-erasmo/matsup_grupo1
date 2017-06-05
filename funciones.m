@@ -34,6 +34,7 @@ function dlg_ingresar_zpg
     global func_actual;
     [num, den] = zp2tf(z,p,g);
     func_actual = tf(num,den);
+    msgbox("La funcion se ha cargado correctamente","Informacion");
   endif
 endfunction
 
@@ -58,12 +59,13 @@ function dlg_ingresar_coef
   if (any(arrayfun(@isnan, num)))
     errordlg("El numerador no tiene el formato correcto. Ingresarlo nuevamente.", "Error de carga");
     return
-  elseif (any(arrayfun(@isnan, den)))
+  elseif ((any(arrayfun(@isnan, den)))||(!any(den)))
     errordlg("El denominador no tiene el formato correcto. Ingresarlo nuevamente.", "Error de carga");
     return
   else
     global func_actual;
     func_actual = tf(num,den);
+    msgbox("La funcion se ha cargado correctamente","Informacion");
   endif
 
 endfunction
@@ -79,6 +81,11 @@ endfunction
 
 
 function show_expresion_gs
+  global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   formato_tipo_lista("Expresion de G(s)");
   [num, barra, den] = get_expresion_gs;
   text(4,4,{num,barra,den}, "horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
@@ -97,6 +104,11 @@ endfunction
 
 
 function show_polos
+  global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   formato_tipo_lista("Polos de G(s)");
   str_polos = get_polos;
   text(4,4,str_polos,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
@@ -115,6 +127,11 @@ endfunction
 
 
 function show_ceros
+  global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   formato_tipo_lista("Ceros de G(s)");
   str_ceros = get_ceros;
   text(4,4,str_ceros,"horizontalalignment", "center", "verticalalignment", "middle", "fontsize", 20);
@@ -129,6 +146,11 @@ endfunction
 
 
 function show_ganancia
+  global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   formato_tipo_lista("Ganancia de G(s)");
   g = get_ganancia;
   str_ganancia = num2str(g);
@@ -137,6 +159,11 @@ endfunction
 
 
 function show_estabilidad
+  global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   formato_tipo_lista("Ganancia de G(s)");
   estabilidad = get_estabilidad;
   str_estabilidad = "";
@@ -174,6 +201,11 @@ endfunction
 
 function graficar_polos_ceros
   global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
+  global func_actual;
   figure(98,"position",[250,280,400,400]);
   pzmap(func_actual);
   title("Grafica de polos y ceros");
@@ -184,6 +216,11 @@ endfunction
 
 
 function get_exp_zpg
+  global func_actual;
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   show_expresion_gs
   figure(5,"position",[50,50,400,400]);
   show_polos
@@ -195,6 +232,11 @@ endfunction
 
 
 function get_all
+  global func_actual
+  if (length(func_actual)==0)
+    errordlg("Por favor ingrese una funcion de transferencia.", "Error");
+    return
+  endif
   get_exp_zpg
   graficar_polos_ceros
   figure(119,"position",[750,280,400,400]);
